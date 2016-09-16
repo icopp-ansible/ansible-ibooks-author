@@ -1,0 +1,8 @@
+---
+- name: Install iBooks Author via Mac App Store
+  command: mas install "{{ item.id }}"
+  args:
+    creates: /Applications/{{ item.name }}.app
+  with_items:
+    - { id: 490152466, name: "iBooks Author" }
+  when: ansible_os_family == "Darwin"
